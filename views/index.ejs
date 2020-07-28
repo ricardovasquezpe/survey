@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/otp.css' />
+  </head>
+  <body class="background">
+    <div class="container col-md-3 py-5">
+        <div class="card">
+            <div class="card-body">
+              <div class="text-center">
+                <h7>Please type the verification code sent to you</h7>
+              </div>
+              <form class="text-center" style="margin-top: 20px;">
+                  <input id="codeBox1" type="number" maxlength="1" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)"/>
+                  <input id="codeBox2" type="number" maxlength="1" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)"/>
+                  <input id="codeBox3" type="number" maxlength="1" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)"/>
+                  <input id="codeBox4" type="number" maxlength="1" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)"/>
+              </form>
+              <div class="text-center" style="margin-top: 20px;">
+                <button type="button" class="btn btn-primary" onclick="validateOtp()">Verify OTP</button>
+              </div>
+            </div>
+        </div>
+    </div>
+    <script src="/javascripts/bootstrap/bootstrap.min.js"></script>
+    <script src="/javascripts/jquery/jquery.min.js"></script>
+    <script src="/javascripts/otp.js"></script>
+  </body>
+</html>

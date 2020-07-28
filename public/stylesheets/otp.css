@@ -1,0 +1,23 @@
+.container.py-5{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
+.background{
+  background-color: gray;
+}
+
+input[type=number] {
+  height: 45px;
+  width: 45px;
+  font-size: 25px;
+  text-align: center;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
