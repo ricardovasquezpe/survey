@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 mongoose.connect("mongodb://localhost:27017/testing");
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var surveyRouter = require('./routes/survey');
 
 var app = express();
 
@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/survey', surveyRouter);
 
 // error handler
 app.use(function(err, req, res, next) {

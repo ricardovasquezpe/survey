@@ -7,13 +7,14 @@ function onKeyUpEvent(index, event) {
     if (getCodeBoxElement(index).value.length === 1) {
       if (index !== 4) {
         getCodeBoxElement(index+ 1).focus();
+        $('#sendOtp').prop('disabled', true);
       } else {
         getCodeBoxElement(index).blur();
-        // Submit code
-        console.log('submit code ');
+        $('#sendOtp').prop('disabled', false);
       }
     }
     if (eventCode === 8 && index !== 1) {
+      $('#sendOtp').prop('disabled', true);
       getCodeBoxElement(index - 1).focus();
     }
   }
@@ -30,13 +31,18 @@ function onKeyUpEvent(index, event) {
 
 function validateOtp(){
   var otp = $("#codeBox1").val() + $("#codeBox2").val() + $("#codeBox3").val() + $("#codeBox4").val();
+  if(otp.length != 4){
+    alert("Ingrese un OTP correcto");
+    return;
+  }
+
   $.ajax({
       type: "GET",
       url: '/searchOtp?otp=' + otp,
       dataType: 'json',
       success: function(data) {
           if(!data.status){
-            // abrir modal
+            alert("El otp ya esta siendo utilizado o no existe");
           } else { 
             localStorage.setItem('status', true);
           }

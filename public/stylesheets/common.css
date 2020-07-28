@@ -1,0 +1,40 @@
+.btn-primary {
+    background-color: #16a085;
+    border-color: #16a085
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active {
+    background-color: #16a085;
+    border-color: #16a085
+}
+
+.btn-primary.disabled, .btn-primary:disabled{
+    
+    background-color: #16a085;
+    border-color: #16a085
+}
+
+.btn-primary:hover, .btn-primary.hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+    color: white;
+    background-color: #48c9b0;
+    border-color: #48c9b0;
+}
+
+.modal {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) { 
+    .modal:before {
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        height: 100%;
+    }
+}
+
+.modal-dialog {
+display: inline-block;
+text-align: left;
+vertical-align: middle;
+}

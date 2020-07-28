@@ -16,7 +16,7 @@ router.get('/searchOtp', function(req, res, next){
   };
   otp.findOne(query).exec(function(err, otpRes){
     res.json(
-      {"status" : (!otpRes.used) ? true : false}
+      {"status" : (otpRes == null || otpRes.used) ? false : true}
     );
     return;
   });

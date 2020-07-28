@@ -4,10 +4,11 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap.min.css' />
     <link rel='stylesheet' href='/stylesheets/otp.css' />
+    <link rel='stylesheet' href='/stylesheets/common.css' />
   </head>
   <body class="background">
     <div class="container col-md-3 py-5">
-        <div class="card">
+        <div class="card background-card">
             <div class="card-body">
               <div class="text-center">
                 <h7>Please type the verification code sent to you</h7>
@@ -19,11 +20,34 @@
                   <input id="codeBox4" type="number" maxlength="1" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)"/>
               </form>
               <div class="text-center" style="margin-top: 20px;">
-                <button type="button" class="btn btn-primary" onclick="validateOtp()">Verify OTP</button>
+                <button type="button" id="sendOtp" class="btn btn-primary" onclick="validateOtp()" disabled>Verify OTP</button>
               </div>
             </div>
         </div>
     </div>
+
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <script src="/javascripts/bootstrap/bootstrap.min.js"></script>
     <script src="/javascripts/jquery/jquery.min.js"></script>
     <script src="/javascripts/otp.js"></script>
