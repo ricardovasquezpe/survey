@@ -1,6 +1,6 @@
 function getCodeBoxElement(index) {
     return document.getElementById('codeBox' + index);
-  }
+}
   
 function onKeyUpEvent(index, event) {
     const eventCode = event.which || event.keyCode;
@@ -44,7 +44,8 @@ function validateOtp(){
           if(!data.status){
             alert("El otp ya esta siendo utilizado o no existe");
           } else { 
-            localStorage.setItem('status', true);
+            //localStorage.setItem('status', true);
+            //abrir modal
           }
       },
       error: function() {
