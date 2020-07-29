@@ -3,7 +3,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost:27017/testing");
+
+const uri = 'mongodb+srv://admin:ajinomoto123@cluster0.7yroz.mongodb.net/Otp?retryWrites=true&w=majority';
+
+mongoose.connect(uri);
 
 var indexRouter = require('./routes/index');
 var surveyRouter = require('./routes/survey');
@@ -24,7 +27,7 @@ app.use('/', indexRouter);
 app.use('/survey', surveyRouter);
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
