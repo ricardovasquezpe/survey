@@ -2,11 +2,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var bidSchema = new Schema({
-  otp        : { type: Number, required: true},
-  used       : { type: Boolean, required: true},
-  created_at : Date,
-  updated_at : Date
+    otp: { type: Number, required: true },
+    used: { type: Boolean, required: true },
+    created_at: Date,
+    updated_at: Date
 });
 
-var Bid = mongoose.model('Otp', bidSchema);
+var Bid = mongoose.model('model', bidSchema, "auth");
 module.exports = Bid;
