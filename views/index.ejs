@@ -19,13 +19,14 @@
                     <h7>Please type the verification code sent to you</h7>
                 </div>
                 <form class="text-center" style="margin-top: 20px;">
-                    <input id="codeBox1" type="text" maxlength="1" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)" oninput="verifier(event)" />
+                    <input id="codeBox1" type="text" maxlength="1" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)" oninput="this.value=this.value.replace(/[^0-9]/g,'');" />
                     <input id="codeBox2" type="text" maxlength="1" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)" oninput="this.value=this.value.replace(/[^0-9]/g,'');" />
                     <input id="codeBox3" type="text" maxlength="1" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)" oninput="this.value=this.value.replace(/[^0-9]/g,'');" />
                     <input id="codeBox4" type="text" maxlength="1" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)" oninput="this.value=this.value.replace(/[^0-9]/g,'');" />
                 </form>
                 <div class="text-center" style="margin-top: 20px;">
                     <button type="button" id="sendOtp" class="btn btn-primary" onclick="validateOtp()" disabled>Verify OTP</button>
+
                 </div>
 
 
