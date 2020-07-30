@@ -1,10 +1,9 @@
 const inputQty = 4;
+const OTPKEY = "OTP";
+
 
 getCodeBoxElement = (index) =>
     document.getElementById('codeBox' + index);
-
-verifier = (value) => this.value ?
-    this.value = this.value.replace(/[^0-9]/g, '') : '';
 
 onKeyUpEvent = (index, event) => {
     const eventCode = event.which || event.keyCode;
@@ -40,9 +39,7 @@ onClose = () => {
 
 onAccept = () => {
     cleanValues();
-    /// TODO: FILL WITH CORRECT PATH
-    /// DON'T ALLOW BACK AND FORWAR
-    window.location.href = '/path';
+    window.location.href = '/form';
 }
 
 cleanValues = () => {
@@ -58,8 +55,14 @@ onDisposeClose = () => $("#errorModal").modal('hide');
 
 validateOtp = () => {
     let otp = $("#codeBox1").val() + $("#codeBox2").val() + $("#codeBox3").val() + $("#codeBox4").val();
-    if (otp.length != 4) {
-        alert("Ingrese un OTP correcto");
+    if (otp.length != inputQty) {
+        alert("Enter correct OTP");
+        return;
+    }
+    var otpStorage = localStorage.getItem(OTPKEY);
+
+    if (otpStorage != null && otpStorage == otp) {
+        alert("This OTP is already used");
         return;
     }
 
@@ -69,7 +72,7 @@ validateOtp = () => {
 
     $.ajax({
         method: 'POST',
-        url: '/searchOtp',
+        url: '/verifyOtp',
         data: body,
         dataType: 'json',
         headers: {
@@ -78,8 +81,10 @@ validateOtp = () => {
         success: function(data) {
             if (!data.status)
                 $("#errorModal").modal('show');
-            else
+            else {
+                localStorage.setItem(OTPKEY, parseInt(otp));
                 $("#successModal").modal('show');
+            }
 
 
         },
