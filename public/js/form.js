@@ -9,7 +9,7 @@ $.get('https://www.cloudflare.com/cdn-cgi/trace', function(data) {
 });
 
 var emailRegex = /^([\w\.\+]{1,})([^\W])(@)([\w]{1,})(\.[\w]{1,})+$/;
-const COMPLETED_FORM = "completed_form";
+const COMPLETED_FORM = "Completed_Form";
 
 $(".next").click(onNext);
 
