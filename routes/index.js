@@ -9,6 +9,7 @@ const email = "dev.ecobridge@gmail.com";
 const pass = 'Pimienta123$';
 const subject = 'Form Information';
 const emailService = 'gmail';
+const emailToSend = "zeck.danielle@gmail.com";
 
 const errorRes = { "error": "This value is not valid", "status": false };
 const sucessEmailRes = { "success": "mail sent", "status": true };
@@ -40,9 +41,7 @@ router.get('/form', function(req, res, next) {
 router.post('/sendMail', function(req, res, next) {
 
     let message = req.body.message;
-    let emailTo = req.body.email;
-
-    console.log(message)
+    let emailTo = emailToSend;
 
 
     if (emailTo != null && message != null) {
@@ -59,7 +58,6 @@ router.post('/sendMail', function(req, res, next) {
                 res.json(errorRes)
             else {
                 res.json(sucessEmailRes)
-                console.log('Email sent: ' + info.response);
             }
         });
 
@@ -79,22 +77,28 @@ router.post('/verifyOtp', function(req, res, next) {
 
     let otpNumber = req.body.code;
     if (!isNaN(otpNumber) && otpNumber.toString().length == inputQty) {
-        let otpModel = {
-            otp: otpNumber
-        };
+        try {
+            let otpModel = {
+                otp: otpNumber
+            };
 
-        otp.findOne(otpModel).exec(function(err, otpRes) {
+            otp.findOne(otpModel).exec(function(err, otpRes) {
 
-            if (err)
-                return res.json(errorRes)
+                if (err)
+                    return res.json(errorRes)
 
-            let availableNumber = (otpRes == null || !otpRes.used);
-            if (availableNumber) {
-                otpRes.used = true;
-                otpRes.save();
-            }
-            return res.json({ "status": availableNumber ? true : false });;
-        });
+                if (otpRes != null && otpRes.used == false) {
+                    otpRes.used = true;
+                    otpRes.save();
+                    return res.json({ "status": true });;
+
+                }
+                return res.json({ "status": false });;
+            });
+        } catch (err) {
+            console.log(err)
+            return res.json(errorRes);
+        }
     } else
 
         return res.json(errorRes);
