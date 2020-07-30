@@ -62,7 +62,7 @@ validateOtp = () => {
     var otpStorage = localStorage.getItem(OTPKEY);
 
     if (otpStorage != null && otpStorage == otp) {
-        alert("This OTP is already used");
+        $("#errorModal").modal('show');
         return;
     }
 
