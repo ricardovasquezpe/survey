@@ -2,19 +2,82 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var otp = require('../models/otp.js');
+var nodemailer = require('nodemailer');
+
+/// TODO: THESE ITEMS NEED TO BE CHANGED
+const email = "dev.ecobridge@gmail.com";
+const pass = 'Pimienta123$';
+const subject = 'Form Information';
+const emailService = 'gmail';
+
+const errorRes = { "error": "This value is not valid", "status": false };
+const sucessEmailRes = { "success": "mail sent", "status": true };
 
 /// TODO: REFACTOR [INPUTQTY]
 const inputQty = 4;
+
+
+var transporter = nodemailer.createTransport({
+    service: emailService,
+    auth: {
+        user: email,
+        pass: pass,
+    }
+});
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'OTP Validation' });
 });
 
-router.post('/searchOtp', function(req, res, next) {
+/* GET home page. */
+router.get('/form', function(req, res, next) {
+    res.render('form', { title: 'Form' });
+});
+
+
+/* GET home page. */
+router.post('/sendMail', function(req, res, next) {
+
+    let message = req.body.message;
+    let emailTo = req.body.email;
+
+    console.log(message)
+
+
+    if (emailTo != null && message != null) {
+
+        var mailOptions = {
+            from: email,
+            to: emailTo,
+            subject: subject,
+            text: message,
+        };
+
+        transporter.sendMail(mailOptions, function(error, info) {
+            if (error)
+                res.json(errorRes)
+            else {
+                res.json(sucessEmailRes)
+                console.log('Email sent: ' + info.response);
+            }
+        });
+
+        return res.json(sucessEmailRes);
+
+    } else
+
+        return res.json(errorRes);
+
+
+
+});
+
+
+
+router.post('/verifyOtp', function(req, res, next) {
 
     let otpNumber = req.body.code;
-    console.log(!isNaN(otpNumber));
     if (!isNaN(otpNumber) && otpNumber.toString().length == inputQty) {
         let otpModel = {
             otp: otpNumber
@@ -23,26 +86,18 @@ router.post('/searchOtp', function(req, res, next) {
         otp.findOne(otpModel).exec(function(err, otpRes) {
 
             if (err)
-                return res.json({ "available": false });
+                return res.json(errorRes)
 
             let availableNumber = (otpRes == null || !otpRes.used);
-
             if (availableNumber) {
-                let doc = new otp({
-                    otp: otpModel.otp,
-                    used: true
-                });
-                doc.save(function(err, doc) {
-                    if (err) return console.error(err);
-                    console.log("Document inserted succussfully!");
-                });
+                otpRes.used = true;
+                otpRes.save();
             }
-            res.json({ "status": availableNumber ? true : false });
-            return;
+            return res.json({ "status": availableNumber ? true : false });;
         });
     } else
-        res.json({ "error": "This value is not valid" });
-    return;
+
+        return res.json(errorRes);
 });
 
 
