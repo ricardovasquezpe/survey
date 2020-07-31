@@ -7,7 +7,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
 
-
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel='stylesheet' href='/css/form.css' />
 
 </head>
@@ -15,18 +16,112 @@
 <body class="background" onload="onLoading()">
 
     <!-- multistep form -->
-    <form id="msform">
+    <form id="msform" autocomplete="off">
         <!-- progressbar -->
         <ul id="progressbar">
-            <li class="active">Account Details</li>
-            <li>Social Profiles</li>
-            <li>Personal Details</li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+
+
         </ul>
-        <!-- fieldsets -->
-        <fieldset>
+        <div class="container col-md-5 py-5 centerCard">
+            <div class="card background-card ">
+                <div class="card-body ">
+                    <h1 class="fs-title">Welcome sir!</h1>
+                    <h3 class="fs-subtitle">We will require to take some details from you</h3>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="bmd-label-floating">Email</label>
+                        <input type="email" onkeyup="inputValidator(0, 'email')" class="form-control" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="bmd-label-floating">Name</label>
+                        <input type="text" onkeyup="inputValidator(1, 'name')" class="form-control" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="bmd-label-floating">Last Name</label>
+                        <input type="text" onkeyup="inputValidator(2, 'lastname')" class="form-control" id="lastname">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="bmd-label-floating">Phone</label>
+                        <input type="text" onkeyup="inputValidator(3, 'phone')" class="form-control" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="bmd-label-floating">Address</label>
+                        <input type="text" onkeyup="inputValidator(4, 'address')" class="form-control" id="address">
+                    </div>
+                    <input id="onNextEmailVerify" onclick="showConfirmModal()" type="button" name="next" class="next action-button" value="Next" />
+                </div>
+
+            </div>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="FormCompleted" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Hello!</h5>
+
+                        </div>
+                        <div class="modal-body">
+                            <p>This Form has been completed</p>
+                            <div class="modal-footer">
+                                <input id="onNextEmailVerify" onclick="onClose()" type="button" name="Ok" class="next action-button" value="OK" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="ComfirmForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Are you sure all elements are completed?</h5>
+
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                <input id="onNextEmailVerify" onclick="sendMail()" type="button" name="Ok" class="next action-button" value="YES" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal fade" id="SuccessModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Thanks for your support!</h5>
+
+                        </div>
+                        <div class="modal-body">
+                            <div class="modal-footer">
+                                <input id="onNextEmailVerify" onclick="onClose()" type="button" name="Ok" class="next action-button" value="OK" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- fieldsets -->
+            <!-- <fieldset>
             <h2 class="fs-title">Welcome sir!</h2>
             <h3 class="fs-subtitle">We will require to take some details from you</h3>
-            <input id="email" type="email" name="email" placeholder="Email" />
+            <input id="email" class="bmd-label-floating" type="email" name="email" placeholder="Email" />
             <input id="name" type="text" name="name" placeholder="Name" />
             <input id="lastname" type="text" name="lastname" placeholder="lastname" />
             <input id="onNextEmailVerify" type="button" name="next" class="next action-button" value="Next" />
@@ -52,7 +147,7 @@
             <h2 class="fs-title ">Thanks for your support!</h2>
             <h3 class="fs-subtitle ">We will be sending you and email </h3>
             <h3 class="fs-subtitle "></h3>
-        </fieldset>
+        </fieldset> -->
     </form>
 
 
