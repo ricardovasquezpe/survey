@@ -5,6 +5,8 @@ var animating;
 const inputQty = 5;
 var inputFilled = [];
 var networkInfo;
+const FORM_ACCESS = "FORM_ACCESS";
+
 $.get('https://www.cloudflare.com/cdn-cgi/trace', function(data) {
     networkInfo = data;
 });
@@ -98,6 +100,8 @@ sendInformation = () => {
 
             showSuccessModal();
             localStorage.setItem(COMPLETED_FORM, true);
+            return localStorage.setItem(FORM_ACCESS, false);
+
 
         },
         error: () => alert('Error occured'),
@@ -150,12 +154,17 @@ emailValidator = (event) => {
 
 onLoading = () => {
 
-    var completedForm = localStorage.getItem(COMPLETED_FORM);
+    var accessToForm = localStorage.getItem(FORM_ACCESS);
+    console.log(accessToForm == 'true')
+    if (accessToForm == 'true') {
 
-    if (completedForm) {
+
+    } else {
+
         showErrorModal();
     }
     $('#onNextEmailVerify').prop('disabled', true);
+
 
 }
 
