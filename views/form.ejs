@@ -18,15 +18,7 @@
     <!-- multistep form -->
     <form id="msform" autocomplete="off">
         <!-- progressbar -->
-        <ul id="progressbar">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
 
-
-        </ul>
         <div class="container col-md-5 py-5 centerCard">
             <div class="card background-card ">
                 <div class="card-body ">
@@ -35,7 +27,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="bmd-label-floating">Email</label>
-                        <input type="email" onkeyup="inputValidator(0, 'email')" class="form-control" id="email">
+                        <input type="text" onkeyup="inputValidator(0, 'email')" class="form-control" id="email">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="bmd-label-floating">Name</label>
@@ -53,7 +45,18 @@
                         <label for="exampleInputEmail1" class="bmd-label-floating">Address</label>
                         <input type="text" onkeyup="inputValidator(4, 'address')" class="form-control" id="address">
                     </div>
-                    <input id="onNextEmailVerify" onclick="showConfirmModal()" type="button" name="next" class="next action-button" value="Send" />
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                            </div>
+                            <div class="col">
+                                <input id="onNextEmailVerify" onclick="showConfirmModal()" type="button" name="next" class="next action-button" value="Submit" />
+                            </div>
+                            <div class="col">
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
@@ -70,7 +73,7 @@
                         <div class="modal-body">
                             <p>Not Allowed to see this page</p>
                             <div class="modal-footer">
-                                <input id="onNextEmailVerify" onclick="onClose()" type="button" name="Ok" class="next action-button" value="OK" />
+                                <input id="onNextEmailVerify" onclick="onClose()" type="button" name="Ok" class="next action-button-modal" value="OK" />
                             </div>
 
                         </div>
@@ -91,7 +94,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-                                <input id="onNextEmailVerify" onclick="sendMail()" type="button" name="Ok" class="next action-button" value="YES" />
+                                <input id="onNextEmailVerify" onclick="sendMail()" type="button" name="Ok" class="next action-button-modal" value="YES" />
                             </div>
 
                         </div>
@@ -108,7 +111,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="modal-footer">
-                                <input id="onNextEmailVerify" onclick="onClose()" type="button" name="Ok" class="next action-button" value="OK" />
+                                <input id="onNextEmailVerify" onclick="onClose()" type="button" name="Ok" class="next action-button-modal" value="OK" />
                             </div>
 
                         </div>
