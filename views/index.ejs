@@ -18,7 +18,7 @@
                 <div class="text-center">
                     <h7>Please type the verification code sent to you</h7>
                 </div>
-                <form class="text-center" style="margin-top: 20px;">
+                <form class="text-center" style="margin-top: 20px;" autocomplete="off">
                     <input id="codeBox1" type="text" maxlength="1" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)" oninput="this.value=this.value.replace(/[^0-9]/g,'');" />
                     <input id="codeBox2" type="text" maxlength="1" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)" oninput="this.value=this.value.replace(/[^0-9]/g,'');" />
                     <input id="codeBox3" type="text" maxlength="1" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)" oninput="this.value=this.value.replace(/[^0-9]/g,'');" />
@@ -60,7 +60,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button onclick="onClose()" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button onclick="onAccept(event)" type="button" class="btn btn-primary">Go To  Page</button>
+                                <button onclick="onAccept(event)" type="button" class="btn btn-primary">Go To Survey</button>
                             </div>
                         </div>
 
