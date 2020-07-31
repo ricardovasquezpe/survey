@@ -29,3 +29,8 @@ input[type=text]:focus {
     border: 2px solid #1abc9c;
     border-radius: 5px;
 }
+
+body {
+    -font-family-sans-serif: "Roboto", "Helvetica", "Arial", sans-serif;
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
