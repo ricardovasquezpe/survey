@@ -1,6 +1,5 @@
 /*custom font*/
 
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 /*basic reset*/
 
@@ -13,22 +12,22 @@ html {
     height: 100%;
     /*Image only BG fallback*/
     /*background = gradient + image pattern combo*/
-    background: linear-gradient(#1abc9c, rgba(155, 89, 182, 0.6));
 }
 
 body {
-    font-family: montserrat, arial, verdana;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background: #16a085;
 }
 
 
 /*form styles*/
 
-#msform {
-    width: 400px;
+
+/* #msform. {
     margin: 50px auto;
     text-align: center;
     position: relative;
-}
+} */
 
 #msform fieldset {
     background: white;
@@ -39,7 +38,6 @@ body {
     box-sizing: border-box;
     width: 80%;
     margin: 0 10%;
-    /*stacking fieldsets above each other*/
     position: relative;
 }
 
@@ -53,7 +51,8 @@ body {
 
 /*inputs*/
 
-#msform input,
+
+/* #msform input,
 #msform textarea {
     padding: 15px;
     border: 1px solid #ccc;
@@ -64,15 +63,14 @@ body {
     font-family: montserrat;
     color: #2C3E50;
     font-size: 13px;
-}
+} */
 
 
 /*buttons*/
 
 #msform .action-button {
     width: 100px;
-    background: #27AE60;
-    font-weight: bold;
+    background: #16a085;
     color: white;
     border: 0 none;
     border-radius: 1px;
@@ -88,21 +86,18 @@ body {
 
 #msform .action-button:hover,
 #msform .action-button:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #1abc9c;
 }
 
 
 /*headings*/
 
 .fs-title {
-    font-size: 15px;
-    text-transform: uppercase;
     color: #2C3E50;
     margin-bottom: 10px;
 }
 
 .fs-subtitle {
-    font-weight: normal;
     font-size: 13px;
     color: #666;
     margin-bottom: 20px;
@@ -114,16 +109,19 @@ body {
 #progressbar {
     margin-bottom: 30px;
     overflow: hidden;
+    margin-top: 20px;
+    padding-left: 30%;
     /*CSS counters to number the steps*/
     counter-reset: step;
+    text-align: center;
+    position: relative;
 }
 
 #progressbar li {
     list-style-type: none;
     color: white;
     text-transform: uppercase;
-    font-size: 9px;
-    width: 33.33%;
+    width: 11%;
     float: left;
     position: relative;
 }
@@ -135,7 +133,7 @@ body {
     line-height: 20px;
     display: block;
     font-size: 10px;
-    color: #333;
+    color: #34d2b3;
     background: white;
     border-radius: 3px;
     margin: 0 auto 5px auto;
@@ -169,6 +167,6 @@ body {
 
 #progressbar li.active:before,
 #progressbar li.active:after {
-    background: #27AE60;
+    background: #34d2b3;
     color: white;
 }

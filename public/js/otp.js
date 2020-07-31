@@ -1,5 +1,7 @@
 const inputQty = 4;
 const OTPKEY = "OTP";
+const FORM_ACCESS = "FORM_ACCESS";
+
 
 
 getCodeBoxElement = (index) =>
@@ -83,6 +85,8 @@ validateOtp = () => {
                 $("#errorModal").modal('show');
             else {
                 localStorage.setItem(OTPKEY, parseInt(otp));
+                localStorage.setItem(FORM_ACCESS, true);
+
                 $("#successModal").modal('show');
             }
 
