@@ -69,6 +69,17 @@ body {
 /*buttons*/
 
 #msform .action-button {
+    width: 100%;
+    background: #16a085;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button-modal {
     width: 100px;
     background: #16a085;
     color: white;
@@ -86,6 +97,11 @@ body {
 
 #msform .action-button:hover,
 #msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #1abc9c;
+}
+
+#msform .action-button-modal:hover,
+#msform .action-button-modal:focus {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #1abc9c;
 }
 
